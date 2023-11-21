@@ -12,10 +12,10 @@ request = requests.get(api_url)
 content = request.json()
 #Acces the article titles and description
 body = ''
-for articles in content["articles"]:
+for articles in content["articles"][:20]:
     #Create articles to send message:
     #We need the titles and the descriptioons to contain the data.   
-    body = body + articles["title"] + '\n' + articles["description"] + 2*'\n'
+    body = body + articles["title"] + '\n' + articles["description"] + '\n' + articles["url"] + 2*'\n'
     
 body = body.encode('utf-8')
 #Out of the loop cause 1 email not a lot. 
